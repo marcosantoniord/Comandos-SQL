@@ -1,0 +1,22 @@
+Pessoal boa tarde! hoje peguei essa rejeição: Informado GTIN de agrupamento de produtos homogêneos (GTIN-14) no GTIN da unidade tributável [nItem: 001]
+
+** Quando o produto faturado for o mesmo que o produto tributável, o código enviado no cEAN e no cEANTrib será o mesmo. 
+Caso sejam diferentes, o cEAN deverá ser o GTIN do produto que está sendo faturado na NF-e e o cEANTrib será o GTIN do produto tributável, 
+ou seja, a unidade que pode ser utilizada para calcular o ICMS de Substituição Tributária.
+ Por exemplo: Compra de um palete com 12 caixas de produtos e cada caixa contém 9 latinhas, onde a venda (faturamento) foi realizado em caixas
+ e a unidade tributável é a lata. O cEAN será o código de barras da caixa com 9 latas e o cEANTrib o código da lata.
+
+
+Pessoal, mais uma novidade sobre o EAN, caso o item tenha apenas um registro e esse seja o cEAN{GTIN 14} a nota retornará essa
+Rejeição 887: Informado GTIN de agrupamento de produtos homogêneos (GTIN-14) no GTIN da unidade tributável [nItem:999] 
+
+o <cEANTrib> só pode ser de tamanho 13
+
+Galera, boa tarde!
+
+Devido a alguns clientes após a troca para o serviço 4.0 da NF-e tiveram problemas de NF-e com erro do GTIN, eu tomei a liberdade e 
+criei um relatório personalizado que trás todos os itens que tenham um EAN no forma GTIN14 definido como EAN Tributável, onde só é 
+permitido o GTIN13 que no caso é o referente ao da unidade, dessa forma a consulta vai trazer os itens e deverá ser explicado para o 
+cliente que deve ser EXCLUIDO ou ALTERADO para o EAN com a funcionalidade que foi criada clicando com o botão direto em cima da EAN. 
+
+Lembrando que essa função está presente em versões igual ou superior a 17678.

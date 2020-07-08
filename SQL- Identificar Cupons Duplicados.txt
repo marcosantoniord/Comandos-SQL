@@ -1,0 +1,8 @@
+//Seta data como ano/mês/dia
+set dateformat ymd
+
+//Lista as vendas com duplicidade 
+select docnumdocfmt, cxanum, count (*) from V_SAIDA where LOJCOD='000001' and DOCDATEMI='2018/05/29' and DOCSTA <> 'X' group by DOCNUMDOCFMT, CXANUM having count (*) > 1
+
+//Lista cupons duplicados
+select docnumdoc, docnumdocfmt, docsta, * from V_SAIDA where LOJCOD='000001' and DOCDATEMI='2018/05/29' and DOCSTA <> 'X' and DOCNUMDOCFMT in (000010055) order by 1

@@ -1,0 +1,25 @@
+// ITENS QUE TENHAM APENAS EAN = cEAN{GTIN 14}, o <cEANTrib>  pode ser de tamanho 13
+
+Itens que tenha 14 dígitos no EAN, e que tenham apenas um EAN no cadastro de Produto
+
+
+select
+ r.REFCOD,r.REFDES,e.EANCOD 
+from
+ EAN E 
+ inner join REFERENCIA r on e.REFPLU = r.REFPLU
+where
+ EXISTS
+   (
+      select 
+        REFPLU, 
+        COUNT(*) 
+      from 
+        EAN 
+      WHERE
+        E.REFPLU = EAN.REFPLU
+      group by 
+       REFPLU 
+      having count(*) = 1
+ ) AND
+ len(e.EANCOD) = 14

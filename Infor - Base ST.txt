@@ -1,0 +1,22 @@
+Adaptar aplicação de redução conforme CONVÊNIO ICMS N° 006, DE 3 DE ABRIL DE 2009
+
+Calculo feito pelo Milênio
+Base do ICMS ST
+Quantidade x valor + ipi - redução + margem
+
+Calculo do fornecedor 
+Base do ICMS ST
+Quantidade x valor - redução +ipi + margem.
+
+Ex: CAMARA DE AR ARO 13/14 AUTOMOVEIS (FR13/14*TR13)
+
+Milênio:
+(4 x 450 + 270) - 8,5% + 69,76%
+2070 - 8,5% = 1894,05
+1894,05 + 69,76% = 3215,34
+
+Fornecedor:
+(4 x 450) - 8,5% + 270 + 69,76%
+1800 - 8,5% = 1647
+1647 + 270 = 1917
+1917 + 69,76% = 3254,29

@@ -1,0 +1,47 @@
+--EAN não tributável
+
+SELECT R.REFCOD,
+      R.REFDES,
+      E.EANCOD,
+      V.DOCNUMDOCFMT,
+      V.LOJCOD
+FROM   V_SAIDA V
+      INNER JOIN ITEM_SAIDA I 
+              ON V.SAICOD = I.SAICOD
+                 AND V.LOJCOD = I.LOJCOD
+      INNER JOIN EAN E
+              ON I.REFPLU = E.REFPLU
+      INNER JOIN REFERENCIA R
+              ON E.REFPLU = R.REFPLU
+WHERE  EXISTS (SELECT REFPLU,
+                     Count(*)
+              FROM   EAN
+              WHERE  E.REFPLU = EAN.REFPLU
+              GROUP  BY REFPLU
+              HAVING Count(*) = 1)
+      AND E.EANTRB = 'N'
+      AND DOCSTANFE = 'R'
+	  and DOCNUMDOCFMT = 3460
+UNION ALL
+SELECT R.REFCOD,
+      R.REFDES,
+      E.EANCOD,
+      V.DOCNUMDOCFMT,
+      V.LOJCOD
+FROM   V_ENTRADA V
+      INNER JOIN ITEM_ENTRADA I
+              ON V.ENTCOD = I.ENTCOD
+                 AND V.LOJCOD = I.LOJCOD
+      INNER JOIN EAN E
+              ON I.REFPLU = E.REFPLU
+      INNER JOIN REFERENCIA R
+              ON E.REFPLU = R.REFPLU
+WHERE  EXISTS (SELECT REFPLU,
+                     Count(*)
+              FROM   EAN
+              WHERE  E.REFPLU = EAN.REFPLU
+              GROUP  BY REFPLU
+              HAVING Count(*) = 1)
+      AND E.EANTRB = 'N'
+      AND DOCSTANFE = 'R'
+	  and DOCNUMDOCFMT = 3460

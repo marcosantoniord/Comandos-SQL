@@ -1,0 +1,42 @@
+Mostra os itens de suas informações de custo, faturamento, código da saída entre outros de acordo com o a loja e data
+
+
+SELECT I.REFPLU,
+I.ITSTOTFAT,
+I.ITSCSTSEMIMP,
+I.ITSQTDTOT,
+I.ITSTOTIMPEST,
+I.ITSTOTIMPFED,
+I.ITSTOTCOM,
+I.ITSTOTSER,
+saicod
+ FROM   ITEM_SAIDA I
+       INNER JOIN REFERENCIA R
+               ON R.REFPLU = I.REFPLU
+       INNER JOIN V_LOJA L
+               ON I.LOJCOD = L.LOJCOD
+WHERE  L.LOJCOD IN ( '000004' )
+       AND I.ITSDOCDATEMI BETWEEN '2018/07/26' AND '2018/07/26'
+       AND I.ITSTIP = 'E'
+       AND I.ITSDOCSTA = 'E'
+       AND ( I.ITSDOCSTANFE IS NULL
+              OR I.ITSDOCSTANFE = 'A' )
+	   AND I.ITSDOCTIP IN ( 'BPA', 'BPF', 'BPNB', 'BPR',
+                            'CA', 'CFE', 'CTA', 'CTAC',
+                            'CTEOS', 'CTFC', 'INT', 'NF1A',
+                            'NFA', 'NFC', 'NFCE', 'NFE',
+                            'NFF', 'NFL', 'NFN', 'NFP',
+                            'NFS', 'NFSC', 'NFSE', 'NFST',
+                            'NFSTC', 'NFT', 'PDV' )
+group by 
+I.REFPLU,
+I.ITSTOTFAT,
+I.ITSCSTSEMIMP,
+I.ITSQTDTOT,
+I.ITSTOTIMPEST,
+I.ITSTOTIMPFED,
+I.ITSTOTCOM,
+I.ITSTOTSER,
+saicod
+order by 3 desc
+

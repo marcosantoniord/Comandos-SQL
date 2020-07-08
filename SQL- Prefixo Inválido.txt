@@ -1,0 +1,23 @@
+--PREFIXO
+
+SELECT V.LOJCOD,
+       R.REFPLU,
+       R.REFDES,
+       E.EANCOD,
+       V.DOCNUMDOCFMT
+FROM   V_SAIDA V
+       INNER JOIN ITEM_SAIDA I WITH (nolock)
+               ON I.LOJCOD = V.LOJCOD
+                  AND I.SAICOD = V.SAICOD
+       INNER JOIN EAN E WITH (nolock)
+               ON E.REFPLU = I.REFPLU
+       INNER JOIN REFERENCIA R WITH (nolock)
+               ON R.REFPLU = I.REFPLU
+WHERE  NOT EXISTS (SELECT *
+                   FROM   PREFIXO_GS1
+                   WHERE  Substring(E.EANCOD, 1, 3) BETWEEN PRFFIXINI AND PRFFIXFIM)
+       AND v.LOJCOD = '000002'
+       AND DOCNUMDOCFMT = 3458 
+	   order by 3
+
+

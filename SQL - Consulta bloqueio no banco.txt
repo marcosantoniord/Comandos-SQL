@@ -1,0 +1,6 @@
+sp_who2 active
+
+dbcc inputbuffer (57)
+
+
+kill 57

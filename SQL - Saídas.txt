@@ -1,0 +1,3 @@
+Mostra a quantidade de saídas e o código do Agente de acordo com a data e loja
+
+//select ITSAGECOD,count(*) from ITEM_SAIDA where ITSDOCDATEMI = '2018/07/25' and LOJCOD = '000001' group by ITSAGECOD

@@ -1,0 +1,8 @@
+Executar CMD como ADMINISTRADOR
+
+Usar (nome do servidor com instância):
+sqlcmd -S PSATDD27\SQLEXPRESS
+
+1> sp_password @old = null, @new = '123456', @loginame = 'sa'
+2> go
+1> exit
